@@ -20,13 +20,14 @@ body {
     align-content: center;
     align-items: center;
     justify-items: center;
+
   }
     .layout-container{
       position: relative;
       display: flex;
   
      
-      margin-top: 100px;
+      margin-top: 0px;
       align-content: center;
       align-items: center;
       justify-items: center;
@@ -35,55 +36,72 @@ body {
      
      
     }
-  @keyframes nav_mobile_expand{
-    from {width: 0%;}
-    to {width: 100%}
-  }
-  @keyframes nav_mobile_expand2{
-    from {width: 0%;}
-    to {width: 60%}
-  }
-  .bar {
-  
-    width: 100%;
-    height: 5px;
-    background-color: var(--navbar_mobile_click);
-    transition: transform 0.3s ease-in-out;
-    border-radius: 20px;
+    .menu-icon {
+      width: 30px;
+      height: 20px;
     
-  }
-  .line1 {
-    animation-name: nav_mobile_expand;
-    animation-duration: 1s;
-  }
-  .line3{
-    animation-name: nav_mobile_expand;
-    animation-duration: 1s;
-  }
-  .line2{
-    float: left;
-    width: 60%;
-    animation-name: nav_mobile_expand2;
-    animation-duration: 1s;
-  }
-  .menu-icon.open {
-    justify-content: center;
-  }
-  .menu-icon.open .bar:nth-of-type(1) {
-    position: absolute;
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      justify-content: space-between;
+     
+      justify-items: center;
+      cursor: pointer;
+      top: 20px;
+      right: 20px;
+      z-index: 25;
+      visibility: hidden;
+    }
     
-    transform: rotate(45deg) ;
-  }
-  
-  .menu-icon.open .bar:nth-of-type(2) {
-    opacity: 0;
-  }
-  
-  .menu-icon.open .bar:nth-of-type(3) {
-    position: absolute;
+    @keyframes nav_mobile_expand{
+      from {width: 0%;}
+      to {width: 100%}
+    }
+    @keyframes nav_mobile_expand2{
+      from {width: 0%;}
+      to {width: 60%}
+    }
+    .bar {
     
-    transform: rotate(-45deg)
-  }
+      width: 100%;
+      height: 5px;
+      background-color: #2b7ddb;
+      transition: transform 0.3s ease-in-out;
+      border-radius: 20px;
+      
+    }
+    .line1 {
+      animation-name: nav_mobile_expand;
+      animation-duration: 1s;
+    }
+    .line3{
+      animation-name: nav_mobile_expand;
+      animation-duration: 1s;
+    }
+    .line2{
+      float: left;
+      width: 60%;
+      animation-name: nav_mobile_expand2;
+      animation-duration: 1s;
+    }
+    .menu-icon.open {
+      justify-content: center;
+    }
+    .menu-icon.open .bar:nth-of-type(1) {
+      position: absolute;
+      
+      transform: rotate(45deg) ;
+    }
+    
+    .menu-icon.open .bar:nth-of-type(2) {
+      opacity: 0;
+    }
+    
+    .menu-icon.open .bar:nth-of-type(3) {
+      position: absolute;
+      
+      transform: rotate(-45deg)
+    }
   .layout-all {
       display: flex;
       margin-top: 0;
@@ -99,50 +117,7 @@ body {
   
   
     }
-    .radio-input .label input {
-      display: none;
-      position:relative;
-    }
     
-    .radio-input {
-      position: fixed;
-      display: flex;
-      gap: 20px;
-  
-      right: 5%;
-     
-
-    }
-    
-    .radio-input .label {
-      display: flex;
-    }
-    
-    .radio-input .label .check {
-      color:rgb(78, 72, 72);
-      font-size: 12px;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: 0.3s;
-      border: 3px solid transparent;
-      box-shadow: 1px 1px 3px rgba(140, 244, 147, 0.5),
-       -1px -1px 4px rgba(255, 255, 255, 0.5);
-    }
-    
-    .radio-input .label input:checked + .check {
-      color:rgb(193, 195, 191);
-      
-      box-shadow: 3px 3px 6px rgba(49, 75, 1, 0.5),
-       -1px -1px 4px rgba(255, 255, 255, 0.5),
-       inset 3px 3px 6px rgba(0, 0, 0, 0.5),
-       inset -1px -1px 4px rgba(255, 255, 255, 0.5);
-      transform: scale(1.1);
-    }
     .whatsapp-iconn{
       visibility: hidden;
    
@@ -165,7 +140,7 @@ body {
       justify-content: center;
       align-content: center;
       justify-items: center;
-      padding: 0 20px;
+      padding: 0 10px;
       z-index: 20;
     }
    
@@ -184,33 +159,68 @@ body {
       background-position: center;
    
     }
-    .nav-ul{
+    .nav-ul {
       display: flex;
-      justify-content: center;
+      position: absolute;
+      justify-content: space-around; /* Espace entre les éléments, y compris .div-btn */
       align-items: center;
-      height: 100%;
-      width: 100%;
-      margin-right: 0%;
+      height: 50%;
+      width: 50%;
+      right: 10%;
+      top: 20%;
     }
-    .nav-item{
-      list-style: none;
+    
+    .div-btn {
+      display: flex; /* Utilisez la flexbox pour aligner les boutons avec les liens */
+      align-items: center;
+      flex-direction: row;
+   
+      justify-content: center;
+      
+      margin-right: calc(40% - 20%); /* Calcul de la marge droite pour atteindre l'intervalle désiré */
+      
+      min-width: 110px; /* Largeur minimale */
+      max-width: 200px; /* Largeur maximale */
+    }
+    
+    .div-btn button {
+      color: #fff;
+      background-color: #2b7ddb;
+      margin: 0px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      font-family: inika_reg;
+      border: none;
+      padding: 5px 5px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .div-btn-line{
+      display: flex;
+      height: 20px;
+      width: 2px;
+      margin-right: 20%;
+      background-color: #2b7ddb;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: #2b7ddb;
+      margin: 10px;
+      font-size: 14px;
+      letter-spacing: 5px;
+      font-family: inika_reg;
+ 
      
-  
     }
-    .nav-link{
-     text-decoration: none;
-     color: #1adf69;
-     margin: 28px;
-     font-size: 12px;
-     letter-spacing:5px;
-     font-family:inika_reg;
-     
-  
+    /* Style pour le bouton actif (clicked) */
+    .clicked {
+      font-weight: bold;
     }
+    
     .nav-ul .clicked{
-     color: rgb(113, 154, 0);
+     color: #2b7ddb;
      
-     scale: 1.2;
+    
     
 
     }
@@ -226,7 +236,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #f75a36;
+ 
       height: 30px;
     
       border-radius: 10px;
@@ -234,9 +244,8 @@ body {
     .layout-lines{
         display: flex;
         flex-direction: column;
-        position: fixed;
-        margin-top:5%;
-        left: 8%;
+    
+  
           z-index: 5;
         visibility: hidden;
       
@@ -267,34 +276,17 @@ body {
       height: 100px;
     }
     @keyframes nav_mobile_opened{
-      from {transform: translateX(-100%);}
-      to {transform: translateX(0%);}
+      from {transform: translateY(-100%);}
+      to {transform: translateY(0%);}
     }
     @keyframes nav_mobile_closed{
-      from {transform: translateX(100%);}
-      to {transform: translateX(-100%);}
+      from {transform: translateY(50%);}
+      to {transform: translateY(0%);}
     }
-  
-    @media screen and (max-width: 1040px) {
-      .nav-link{margin:10px;font-size: 12px;letter-spacing:2px;}
-      .radio-input {
-        right: 3%;
-    
-      }
-      .radio-input .label .check {
-        font-size: 10px;
-        width: 25px;
-        height: 25px;
-      }
-     
-     }
+
      @media screen and (max-width: 790px) {
       .nav-link{margin:8px;font-size: 11px;letter-spacing:2px;}
-      .radio-input {
-        right: 2%;
-       
-       
-      }
+    
       .whatsapp-iconn{
 
         position: fixed;
@@ -307,55 +299,14 @@ body {
         z-index: 10;
    
       }
-      .radio-input .label .check {
-        font-size: 8px;
-        width: 20px;
-        height: 20px;
-      }
+      
      }
   
   
-    @media screen and (max-width: 700px) {
-      .radio-input {
-        right: 0px;
-        margin-top: 50px;
-    
-      }
-      .radio-input .label .check {
-        color:rgb(112, 101, 101);
-        font-size: 12px;
-        width: 30px;
-        height: 30px;
-   
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: 0.3s;
-        border: 3px solid transparent;
-        box-shadow: 1px 1px 3px rgba(140, 244, 147, 0.5),
-         -1px -1px 4px rgba(255, 255, 255, 0.5);
-      }
+  
+     @media screen and (max-width: 700px) {
       
-      .radio-input .label input:checked + .check {
-        color:rgb(0, 0, 0);
-        background-color: #8dbe4490;
-        box-shadow: 3px 3px 6px rgba(87, 94, 74, 0.5),
-         -1px -1px 4px rgba(255, 255, 255, 0.5),
-         inset 3px 3px 6px rgba(0, 0, 0, 0.5),
-         inset -1px -1px 4px rgba(24, 24, 24, 0.5);
-        transform: scale(1.1);
-      }
-      .layout-model{
-        width: 98%;
-       
-        font-size: 14px;
-      }
-      .layout-model .btn{
-       
-        font-size: 14px;
-      }
+      
       .menu-icon{
           position: fixed;
           visibility: visible;
@@ -368,24 +319,17 @@ body {
           visibility: hidden;
           
       }
-      .radio-input {
-        display: flex;
-        position: static;
-       
-       margin-bottom: 30px;
-        
-      }
-    
+      
      .nav_opened{
      
       display: flex;
       position: fixed;
-      width: 60%;
-      height:100%;
+      width: 100%;
+      height:50%;
       margin-top:0%;
       
       left: 0%;
-      background-color:  var(--navbar_mobile_ul);
+      background-color:  #ffffff;
       animation-name: nav_mobile_opened;
       animation-duration: 0.5s;
       visibility: visible;
@@ -399,11 +343,11 @@ body {
      .nav_closed{
       display: flex;
       position: fixed;
-      width: 60%;
-      height:700px;
+      width:100%;
+      height:0%;
       margin-top:0%;
-      left: -120%;
-      background-color:  var(--navbar_mobile_ul);
+    
+      background-color:  #ffffff;
       animation-name: nav_mobile_closed;
       animation-duration: 1s;
       visibility: visible;
@@ -413,8 +357,8 @@ body {
      }
      .layout-nav-mobile{
       position: fixed;
-      top: 0%;
-      background-color:  var(--mather-color);
+    
+      background-color:  #ffffff;
       height: 60px;
       width: 100%;
      z-index: 30;
@@ -426,8 +370,8 @@ body {
      position: fixed;
     top:1%;
   
-     right:1%;
-     left: auto;
+     left:1%;
+     right: auto;
    
       z-index: 35;
     }
@@ -480,7 +424,7 @@ body {
     }
     .layout-header{
       position: relative;
-      margin-top: 20%;
+      margin-top: 0%;
       display: flex;
       flex-direction: column;
       width: 100%;

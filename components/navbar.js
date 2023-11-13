@@ -2,7 +2,7 @@
 
 import React, { Component ,useState,useEffect} from 'react'
 import Link from 'next/link'
-
+import Image from 'next/image';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import localStorage from 'redux-persist/lib/storage';
@@ -40,6 +40,57 @@ const logout=() => {
   console.log('logout...')
   props.Logout_redux()
 }
+const navbarVariants = {
+  hidden: { y: "0%" },
+  visible: {
+    y: 0,
+    transition: {
+     
+      duration: 0.75,
+      type: "spring",
+      stiffness: 100,
+      mass: 0.5,
+      damping: 10,
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: "0%", opacity: 1 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+     
+      duration: 0.75,
+      type: "spring",
+      stiffness: 100,
+      mass: 0.5,
+      damping: 10,
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
+    },
+  },
+};
+const modelVariants = {
+  hidden: { x: "-100%", opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+     
+      duration: 2,
+      type: "spring",
+      stiffness: 50,
+      mass: 1,
+      damping: 10,
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
+    },
+  },
+};
 const clicked_mobile =()=>{
   
     {setOpen(!open)}
@@ -48,12 +99,13 @@ const clicked_mobile =()=>{
     setnav_opened("layout-nav nav_opened")
   }
   const clicked =(to_link)=>{
-    props.Set_link_redux(to_link)
+    
   
   }
   const MenuIcon = () => {
-   
-  
+ 
+ 
+
     return (
       <div className={`menu-icon ${open ? "open" : ""}`} onClick={() =>clicked_mobile()}>
         <div className="bar line1"></div>
@@ -66,12 +118,12 @@ const clicked_mobile =()=>{
 const link_array_logout = [
     {
       FR: [
-        { id: 1, title: 'Home', to: '/' },
-        { id: 2, title: 'Agir avec nous', to: '/agir' },
-        { id: 3, title: 'Nos actions', to: '/actions' },
-        { id: 4, title: 'Nous contacter', to: '/contact' },
+        { id: 1, title: 'Acceuil', to: '/' },
+        { id: 2, title: 'Formations', to: '/formations' },
+        { id: 3, title: 'Service', to: '/service' },
+        { id: 4, title: 'Contact', to: '/contact' },
         { id: 5, title: 'Login', to: '/login' },
-        { id: 6, title: 'Register', to: '/register' }
+       
       ],
       ENG: [
         { id: 1, title: 'Homee', to: '/' },
@@ -86,10 +138,10 @@ const link_array_logout = [
   const link_array_login = [
     {
       FR: [
-        { id: 1, title: 'Home', to: '/' },
-        { id: 2, title: 'Agir avec nous', to: '/agir' },
-        { id: 3, title: 'Nos formation', to: '/formation' },
-        { id: 4, title: 'Nous contacter', to: '/contact' },
+        { id: 1, title: 'Acceuil', to: '/' },
+        { id: 2, title: 'Formations', to: '/formations' },
+        { id: 3, title: 'Service', to: '/service' },
+        { id: 4, title: 'Contact', to: '/contact' },
         { id: 5, title: 'Logout', to: '/logout' },
        
       ],
@@ -110,20 +162,45 @@ const link_array_logout = [
    return(
 
     <ul className="nav-ul">
+          
+             
+   
+
+
                       {link_array[0]['FR'].map((item) => {
                         if (item.title==='Logout'){
                           return(
-                            <button onClick={logout}>Logout</button>
+                            <div className="div-btn" >
+                                <div className="div-btn-line" >
+                                
+                               </div>
+                               <button onClick={()=>logout()}>Logout</button>
+                       
+                              </div>
+                           
 
                           )
                         }
+                        else if (item.title==='Login') {
+                          return(
+                            <div className="div-btn" >
+                               <div className="div-btn-line" >
+                                
+                                </div>
+                             <button onClick={()=>logout()}>S'identifier</button>
+                       
+                              </div>
+                            
+
+                          )
+                        } 
                         else{
                           return(
                           <li
                           key={item.id}
-                          className={item.to ===lastWord  ? contact_div : other_div}
+                          className={ other_div}
                         >
-                          <Link className={item.to ===lastWord  ? "nav-link clicked"  : "nav-link"} 
+                          <Link className={ "nav-link"} 
                           href={item.to} onClick={() => clicked(item.to)}>
                             {item.title}
                           </Link>
@@ -132,6 +209,7 @@ const link_array_logout = [
                         }
               
             })}
+          
                 </ul>
    )
   }
@@ -182,7 +260,7 @@ return(
        {showNav && Nav()}
        
        <div className="nav-logo" >
-          <h1 className="">logo</h1>
+       <Image src={"/logo.png"} alt="logo_m" width={130} height={50} />
         </div>
               <div className="layout-nav-mobile">
              

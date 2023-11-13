@@ -147,7 +147,7 @@ export const Register_redux = (username, password ,re_password) => async dispatc
     }
     export const Logout_redux = () => async dispatch => {
       
-   
+      console.log('logout..........')
        
        const config = {
          headers: {

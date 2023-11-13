@@ -3,8 +3,8 @@
 import '../styles/Layout.css'
 import '../styles/formation.css'
 import './globals.css'
-
-
+import '../styles/accueil/home-part1.css'
+import '../styles/accueil/home-part2.css'
 import { Provide_redux } from "../Redux/provider";
 import Navbar from '../components/navbar'
 
